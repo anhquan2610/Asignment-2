@@ -1,44 +1,52 @@
 const express = require('express')
-const StudentModel = require('../models/StudentModel')
+const XephinhModel = require('../models/XephinhModel')
 const router = express.Router()
 
 
 router.get('/drop', (req, res) => {
-    StudentModel.deleteMany({}, () => {
+    XephinhModel.deleteMany({}, () => {
         console.log("Delete all data succeed !")
-        res.redirect('/student')
+        res.redirect('/xephinh')
     })
 })
 
 
 
-//URL: localhost:3000/student
+
 router.get('/', (req, res) => {
-    StudentModel.find((err, data) => {
+    XephinhModel.find((err, data) => {
         if (!err) {
             //res.send(data)
             //render ra trang index ở thư mục views/student
-            res.render('student/index', { student: data })
+            res.render('xephinh/index', { xephinh: data })
+        }
+    })
+})
+
+router.get('/list', (req, res) =>{
+    XephinhModel.find((err, data)=>{
+        if(!err) {
+            res.render('xephinh/list', {xephinh: data})
         }
     })
 })
 
 router.get('/delete/:id', (req, res) => {
-    StudentModel.findByIdAndDelete(req.params.id, (err) => {
+    XephinhModel.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             console.log(err)
         } else {
-            console.log("Delete student succeed !");
+            console.log("Delete the item succeed !");
             //var message = "Delete student succeed !";
             //redirect về trang /student (URL không phải view)
-            res.redirect("/student");
+            res.redirect("/xephinh");
         }
     })
 })
 
 //render ra form ADD
 router.get('/add', (req, res) => {
-    res.render("student/new");
+    res.render("xephinh/new");
 })
 
 //nhận & xử lý dữ liệu từ form ADD
@@ -54,22 +62,22 @@ router.post('/add', (req, res) => {
     //     }
     // })
     //Cách 2: dùng "create"
-    StudentModel.create(req.body, (err) => {
+    XephinhModel.create(req.body, (err) => {
         if (!err) {
-            console.log('Add student succeed !')
-            res.redirect("/student")
+            console.log('Add item succeed !')
+            res.redirect("/xephinh")
         }
     })
 })
 
 //render ra form EDIT
 router.get('/edit/:id', (req, res) => {
-    StudentModel.findById(req.params.id, (err, data) => {
+    XephinhModel.findById(req.params.id, (err, data) => {
         if (!err) {
             //render ra file: update.hbs (trong thư mục views/student)
             //gửi kèm dữ liệu của object student để load vào form edit
             //student (tên) , data (dữ liệu)
-            res.render("student/update", { student: data })
+            res.render("xephinh/update", { xephinh: data })
         }
     })
 })
@@ -77,48 +85,50 @@ router.get('/edit/:id', (req, res) => {
 //nhận & xử lý dữ liệu từ form EDIT
 router.post('/edit/:id', (req, res) => {
     var id = req.params.id;
-    var student = req.body;
-    StudentModel.findByIdAndUpdate(id, student, (err) => {
+    var xephinh = req.body;
+    XephinhModel.findByIdAndUpdate(id, xephinh, (err) => {
         if (!err) {
-            console.log("Update student succeed !")
-            res.redirect("/student")
+            console.log("Update item succeed !")
+            res.redirect("/xephinh")
         }
     })
 })
 
 router.get('/detail/:id', (req, res) => {
-    StudentModel.findById(req.params.id, (err, student) => {
+    XephinhModel.findById(req.params.id, (err, xephinh) => {
         if (!err) {
-            res.render('student/info', { student: student })
+            res.render('xephinh/info', { xephinh: xephinh })
         }
     })
 })
 
+
+
 //search function
 router.post('/search', (req, res) => {
-    StudentModel.find({ name: new RegExp(req.body.name, "i") }, (err, data) => {
+    XephinhModel.find({ name: new RegExp(req.body.name, "i") }, (err, data) => {
         if (!err) {
-            res.render('student/index', { student: data })
+            res.render('xephinh/index', { xephinh: data })
         }
     })
 })
 //sort function
 router.get('/sort/asc', (req, res) => {
-    StudentModel.find()
+    XephinhModel.find()
         .sort({ name: 1 })
         .exec((err, data) => {
             if (!err) {
-                res.render('student/index', { student: data })
+                res.render('xephinh/index', { xephinh: data })
             }
         })
 })
 
 router.get('/sort/desc', (req, res) => {
-    StudentModel.find()
+    XephinhModel.find()
         .sort({ name: -1 })
         .exec((err, data) => {
             if (!err) {
-                res.render('student/index', { student: data })
+                res.render('xephinh/index', { xephinh: data })
             }
         })
 })

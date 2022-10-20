@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
 var indexRouter = require('./routes/index')
-var studentRouter = require('./routes/student')
-var lecturerRouter = require('./routes/lecturer')
+var xephinhRouter = require('./routes/xephinh')
+var dieukhienRouter = require('./routes/dieukhien')
 var apiRouter = require('./routes/api')
 
 var mongoose = require('mongoose')
 var url =
-    'mongodb+srv://longndt:xdHB48B3Fv*%40TPa@cluster0.i5kings.mongodb.net/cloud'
+    'mongodb://localhost:27017/ASM'
 
 mongoose.connect(url, { useNewUrlParser: true }, err => {
     if (!err) {
@@ -49,8 +49,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/student', studentRouter)
-app.use('/lecturer', lecturerRouter)
+app.use('/xephinh', xephinhRouter)
+app.use('/dieukhien', dieukhienRouter)
 app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler
