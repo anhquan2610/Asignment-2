@@ -23,10 +23,10 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/list', (req, res) =>{
-    XephinhModel.find((err, data)=>{
-        if(!err) {
-            res.render('xephinh/list', {xephinh: data})
+router.get('/list', (req, res) => {
+    XephinhModel.find((err, data) => {
+        if (!err) {
+            res.render('xephinh/list', { xephinh: data, })
         }
     })
 })
