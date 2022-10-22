@@ -17,6 +17,7 @@
   <header>
     
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="https://i.pinimg.com/originals/67/32/40/673240c24ec0685148cb37df5b7797eb.png" width="200" height="100" ></a>
     <button
@@ -35,18 +36,25 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/"style = "font-szie: 100px" >Trang Chủ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/xephinh"> Admin Đồ chơi xếp hình</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/dieukhien">Admin Đồ chơi mô hình</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/xephinh/list">Đồ chơi xếp hình</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/dieukhien/list">Đồ chơi mô hình</a>
-        </li>
+        <div class="dropdown">
+   <button class="nut_dropdown btn btn-light" >Giao diện quản lí sản phẩm</button>
+   <div class="noidung_dropdown">
+     <a href="/xephinh">Đồ chơi xếp hình </a>
+     <a href="/dieukhien">Đồ chơi điều khiền </a>
+     
+   </div>
+ </div>
+
+ <div class="dropdown">
+   <button class="nut_dropdown btn btn-light" >Giao diện khách hàng </button>
+   <div class="noidung_dropdown">
+     <a href="/xephinh/list">Đồ chơi xếp hình </a>
+     <a href="/dieukhien/list">Đồ chơi điều khiền </a>
+     
+   </div>
+ </div>
+        
+        
       </ul>
     </div>
   </div>
@@ -175,7 +183,7 @@
   </footer>
   <!-- Footer -->
 </div>
-<!-- End of .container -->
+<!-- End of .container -->`
 
 </body>
 
