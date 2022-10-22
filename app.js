@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index')
 var xephinhRouter = require('./routes/xephinh')
 var dieukhienRouter = require('./routes/dieukhien')
 var apiRouter = require('./routes/api')
-var legoRouter = require('./routes/lego')
+
 
 var mongoose = require('mongoose')
 var url =
@@ -53,7 +53,7 @@ app.use('/', indexRouter)
 app.use('/xephinh', xephinhRouter)
 app.use('/dieukhien', dieukhienRouter)
 app.use('/api', apiRouter)
-app.use('/lego', legoRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
