@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
 var indexRouter = require('./routes/index')
-var xephinhRouter = require('./routes/xephinh')
-var dieukhienRouter = require('./routes/dieukhien')
+var dcRouter = require('./routes/dc')
+var marvelRouter = require('./routes/marvel')
 var apiRouter = require('./routes/api')
 
 var mongoose = require('mongoose')
 var url =
-    'mongodb+srv://quandda:Quan26102002@cluster0.qksqqxx.mongodb.net/ASM'
+    'mongodb+srv://Viethoang:Cvhhth00@atlascluster.fgcoxp0.mongodb.net/StoryToy'
 
 mongoose.connect(url, { useNewUrlParser: true }, err => {
     if (!err) {
@@ -49,8 +49,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/xephinh', xephinhRouter)
-app.use('/dieukhien', dieukhienRouter)
+app.use('/dc', dcRouter)
+app.use('/marvel', marvelRouter)
 app.use('/api', apiRouter)
 
 

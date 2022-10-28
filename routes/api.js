@@ -1,5 +1,5 @@
 const express = require('express')
-const StudentModel = require('../models/XephinhModel')
+const StudentModel = require('../models/DCModel')
 const router = express.Router()
 
 //view all: select * from student
